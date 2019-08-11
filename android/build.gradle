@@ -2,22 +2,28 @@ apply plugin: 'com.android.library'
 
 buildscript {
     repositories {
+        google()
         mavenCentral()
         jcenter()
         maven {
             // All of React Native (JS, Android binaries) is installed from npm
-            url "$rootDir/node_modules/react-native/android"
+            url "$rootDir/../node_modules/react-native/android"
         }
     }
 }
 
+dependencies {
+    classpath 'com.android.tools.build:gradle:3.4.1'
+    classpath 'com.newrelic.agent.android:agent-gradle-plugins:5+'
+}
+
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         ndk {
@@ -28,7 +34,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.newrelic.agent.android:android-agent:5.11.+'
+    compile 'com.android.support:appcompat-v7:27.+'
+    compile 'com.newrelic.agent.android:android-agent:5.+'
     compile 'com.facebook.react:react-native:+' //from node_modules
 }
